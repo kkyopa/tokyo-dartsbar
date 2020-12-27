@@ -192,7 +192,7 @@ const GenericTemplate: React.FC<GenericTemplateProps> = ({
               noWrap
               className={classes.title}
             >
-              Tokyo_dartsBar
+              Tokyo_DartsBar
             </Typography>
           </Toolbar>
         </AppBar>
@@ -223,7 +223,7 @@ const GenericTemplate: React.FC<GenericTemplateProps> = ({
                 <ListItemIcon>
                   <InfoIcon />
                 </ListItemIcon>
-                <ListItemText primary="Tokyo_dartsBarとは" />
+                <ListItemText primary="Tokyo_DartsBarとは" />
               </ListItem>
             </Link>
           </List>
