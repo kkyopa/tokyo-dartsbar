@@ -8,11 +8,11 @@ import "./App.css";
 const App: React.FC = () => {
   return (
     <Router>
-    <Switch>
-      <Route path="/products" component={ProductPage} exact />
-      <Route path="/" component={HomePage} exact />
-    </Switch>
-  </Router>
+      <Switch>
+        <Route path="/products" component={ProductPage} exact />
+        <Route path="/" component={HomePage} exact />
+      </Switch>
+    </Router>
   );
 };
 
