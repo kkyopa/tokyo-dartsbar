@@ -22,6 +22,16 @@ interface TodoProps {
   items: { id: string; text: string }[];
 }
 
+const cours = Array();
+const tokyo = [
+  '足立区', '荒川区', '板橋区', '江戸川区', '大田区', '葛飾区', '北区', '江東区', '品川区', '渋谷区', '新宿区', '杉並区',
+  '墨田区', '世田谷', '台東区', '中央区', '千代田', '豊島区', '中野区', '練馬区', '文京区', '港区', '目黒区'
+];
+
+for (var i = 0; i < tokyo.length; i++) {
+  cours.push(<MenuItem>{tokyo[i]}</MenuItem>);
+}
+
 export default function SimpleSelect(props) {
   const classes = useStyles();
   const [age, setAge] = React.useState("");
@@ -44,29 +54,7 @@ export default function SimpleSelect(props) {
           <MenuItem value="">
             <em>選択してください</em>
           </MenuItem>
-          <MenuItem value={"足立区"}>足立区</MenuItem>
-          <MenuItem value={"荒川区"}>荒川区</MenuItem>
-          <MenuItem value={"板橋区"}>板橋区</MenuItem>
-          <MenuItem value={"江戸川区"}>江戸川区</MenuItem>
-          <MenuItem value={"大田区"}>大田区</MenuItem>
-          <MenuItem value={"葛飾区"}>葛飾区</MenuItem>
-          <MenuItem value={"北区"}>北区</MenuItem>
-          <MenuItem value={"江東区"}>江東区</MenuItem>
-          <MenuItem value={"品川区"}>品川区</MenuItem>
-          <MenuItem value={"渋谷区"}>渋谷区</MenuItem>
-          <MenuItem value={"新宿区"}>新宿区</MenuItem>
-          <MenuItem value={"杉並区"}>杉並区</MenuItem>
-          <MenuItem value={"墨田区"}>墨田区</MenuItem>
-          <MenuItem value={"世田谷区"}>世田谷区</MenuItem>
-          <MenuItem value={"台東区"}>台東区</MenuItem>
-          <MenuItem value={"中央区"}>中央区</MenuItem>
-          <MenuItem value={"千代田区"}>千代田区</MenuItem>
-          <MenuItem value={"豊島区"}>豊島区</MenuItem>
-          <MenuItem value={"中野区"}>中野区</MenuItem>
-          <MenuItem value={"練馬区"}>練馬区</MenuItem>
-          <MenuItem value={"文京区"}>文京区</MenuItem>
-          <MenuItem value={"港区"}>港区</MenuItem>
-          <MenuItem value={"目黒区"}>目黒区</MenuItem>
+          {cours}
         </Select>
         <ul>
           {props.items.map((list) => (
