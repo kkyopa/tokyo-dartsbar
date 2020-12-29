@@ -12,7 +12,6 @@ return (
   <SimpleMenu
   items={tod}
   />
-  <ContainedButtons />
   </React.Fragment>
 )
 
