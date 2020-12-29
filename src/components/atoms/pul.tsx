@@ -18,7 +18,11 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export default function SimpleSelect() {
+interface TodoProps {
+  items: { id: string; text: string }[];
+}
+
+export default function SimpleSelect(props) {
   const classes = useStyles();
   const [age, setAge] = React.useState("");
 
@@ -64,6 +68,11 @@ export default function SimpleSelect() {
           <MenuItem value={"港区"}>港区</MenuItem>
           <MenuItem value={"目黒区"}>目黒区</MenuItem>
         </Select>
+        <ul>
+          {props.items.map((list) => (
+            <li>{list.text}</li>
+          ))}
+        </ul>
         {/* <FormHelperText></FormHelperText> */}
       </FormControl>
     </div>
