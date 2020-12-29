@@ -1,16 +1,15 @@
 import React from "react";
 import GenericTemplate from "../templates/GenericTemplate";
-import SimpleMenu from "../atoms/pul";
-import ContainedButtons from "../atoms/buttom";
+// import ContainedButtons from "../atoms/buttom";
 import SimplePaper from "../atoms/Paper";
+import Search from "../molecules/Search";
 
 const HomePage: React.FC = () => {
   return (
     <GenericTemplate title="Tokyo_DartsBar">
       <img src="/images/title.png" />
       <>検索してみよう</>
-      <SimpleMenu />
-      <ContainedButtons />
+      <Search />
       <SimplePaper/>
     </GenericTemplate>
   );
