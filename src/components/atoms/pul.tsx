@@ -5,7 +5,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-import ContainedButtons from "../atoms/buttom";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -15,6 +15,11 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     selectEmpty: {
       marginTop: theme.spacing(2),
+    },
+    root: {
+      "& > *": {
+        margin: theme.spacing(1),
+      },
     },
   })
 );
@@ -51,7 +56,7 @@ const tokyo = [
 ];
 
 for (var i = 0; i < tokyo.length; i++) {
-  cours.push(<MenuItem>{tokyo[i]}</MenuItem>);
+  cours.push(<MenuItem value={i}>{tokyo[i]}</MenuItem>);
 }
 
 export default function SimpleSelect(props) {
@@ -60,11 +65,6 @@ export default function SimpleSelect(props) {
 
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
     setAge(event.target.value as string);
-  };
-
-  const [count, setCount] = useState(0);
-  const handleClick = () => {
-    setCount(() => count + 1);
   };
 
   return (
@@ -83,8 +83,11 @@ export default function SimpleSelect(props) {
           </MenuItem>
           {cours}
         </Select>
-        <p>You clicked {count} times</p>
-        <button onClick={handleClick}>+1</button>
+        <div className={classes.root}>
+          <Button variant="contained" color="secondary">
+            {tokyo[age]}&nbsp; 検索
+          </Button>
+        </div>
         <ul>
           {props.items.map((list) => (
             <li>{list.text}</li>
