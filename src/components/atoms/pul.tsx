@@ -6,6 +6,9 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Button from "@material-ui/core/Button";
+import axios from 'axios';
+import MsgList from "../organisms/MsgList";
+
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -67,6 +70,9 @@ export default function SimpleSelect(props) {
     setAge(event.target.value as string);
   };
 
+  const [count, setCount] = useState(0);
+
+
   return (
     <div>
       <FormControl className={classes.formControl}>
@@ -84,10 +90,12 @@ export default function SimpleSelect(props) {
           {cours}
         </Select>
         <div className={classes.root}>
-          <Button variant="contained" color="secondary">
+          <Button variant="contained" color="secondary" onClick={() => setCount(count + 1)}>
             {tokyo[age]}&nbsp; 検索
           </Button>
         </div>
+        <p>You clicked {count} times</p>
+        <MsgList />
         <ul>
           {props.items.map((list) => (
             <li>{list.text}</li>
