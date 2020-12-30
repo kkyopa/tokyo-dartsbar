@@ -3,19 +3,36 @@ import axios from "axios";
 
 const server = 'http://localhost:8000/users';
 
-class MsgList extends React.Component {
+interface State {
+  status: boolean;
+  result: string;
+}
+
+class MsgList extends React.Component<{}, State> {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { status: true ,result: '' };
+    this.handleClick = this.handleClick.bind(this);
   }
 
 
-  handleClick = () => {
-    axios
-      .get(server)
-      .then(res => console.log(res))
-      .catch(err => alert(err));
-  };
+  handleClick(event) {
+    axios.get(server)
+      .then((res) => {
+        this.setState({
+          status: true,
+          result: res.data
+        });
+        console.log(this.state.result[0]);
+      })
+      .catch((e) => {
+        console.error(e);
+        this.setState({
+          status: false,
+          result: e,
+        });
+      });
+  }
 
   render() {
     return <>
