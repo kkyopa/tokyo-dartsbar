@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -62,6 +62,8 @@ for (var i = 0; i < tokyo.length; i++) {
   cours.push(<MenuItem value={i}>{tokyo[i]}</MenuItem>);
 }
 
+
+
 export default function SimpleSelect(props) {
   const classes = useStyles();
   const [age, setAge] = React.useState("");
@@ -70,7 +72,16 @@ export default function SimpleSelect(props) {
     setAge(event.target.value as string);
   };
 
-  const [count, setCount] = useState(0);
+  const [posts, setPosts] = useState(0);
+
+
+  useEffect(() => {
+    const getUser = async () => {
+      const response = await axios.get('https://api.github.com/users/tagty');
+      console.log(response.data)
+    }
+    getUser()
+  }, [])
 
 
   return (
@@ -90,11 +101,11 @@ export default function SimpleSelect(props) {
           {cours}
         </Select>
         <div className={classes.root}>
-          <Button variant="contained" color="secondary" onClick={() => setCount(count + 1)}>
+          <Button variant="contained" color="secondary" onClick={() => setPosts(posts + 1)}>
             {tokyo[age]}&nbsp; 検索
           </Button>
         </div>
-        <p>You clicked {count} times</p>
+        <p>You clicked {posts} times</p>
         <MsgList />
         <ul>
           {props.items.map((list) => (
