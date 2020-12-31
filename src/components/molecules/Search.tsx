@@ -6,11 +6,11 @@ import ContainedButtons from "../atoms/buttom";
 
 
 const Search: React.FC = () => {
-  const tod = [{id: 'タスク１', text: 'ご飯を作る'}];
+  const todo = [{id: 'タスク１', text: 'ご飯を作る'}];
 return (
   <React.Fragment>
   <SimpleMenu
-  items={tod}
+  items={todo}
   />
   </React.Fragment>
 )

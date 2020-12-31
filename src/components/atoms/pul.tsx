@@ -6,9 +6,8 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Button from "@material-ui/core/Button";
-import axios from 'axios';
-import MsgList from "../organisms/MsgList";
-
+import axios from "axios";
+import BookSearch from "../molecules/BookSearch";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -62,8 +61,6 @@ for (var i = 0; i < tokyo.length; i++) {
   cours.push(<MenuItem value={i}>{tokyo[i]}</MenuItem>);
 }
 
-
-
 export default function SimpleSelect(props) {
   const classes = useStyles();
   const [age, setAge] = React.useState("");
@@ -72,17 +69,26 @@ export default function SimpleSelect(props) {
     setAge(event.target.value as string);
   };
 
-  const [posts, setPosts] = useState(0);
+  interface ISUB {
+    content: string;
+    title: string;
+  }
 
+  interface hits extends Array<ISUB> {}
+  const initData: hits = [];
+  const [data, setData] = useState(initData);
+
+  const server = `http://localhost:8000/users?query=redux`;
+
+  const [posts, setPosts] = useState(0);
 
   useEffect(() => {
     const getUser = async () => {
-      const response = await axios.get('https://api.github.com/users/tagty');
-      console.log(response.data)
-    }
-    getUser()
-  }, [])
-
+      const response = await axios.get(server);
+      console.log(response.data);
+    };
+    getUser();
+  }, []);
 
   return (
     <div>
@@ -101,15 +107,26 @@ export default function SimpleSelect(props) {
           {cours}
         </Select>
         <div className={classes.root}>
-          <Button variant="contained" color="secondary" onClick={() => setPosts(posts + 1)}>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={() => setPosts(posts + 1)}
+          >
             {tokyo[age]}&nbsp; 検索
           </Button>
         </div>
         <p>You clicked {posts} times</p>
-        <MsgList />
+        <BookSearch />
         <ul>
           {props.items.map((list) => (
             <li>{list.text}</li>
+          ))}
+        </ul>
+        <ul>
+          {data.map((item) => (
+            <li>
+              <a href={item.content}>{item.title}</a>
+            </li>
           ))}
         </ul>
         {/* <FormHelperText></FormHelperText> */}
