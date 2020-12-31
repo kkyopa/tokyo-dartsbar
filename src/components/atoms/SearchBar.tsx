@@ -1,7 +1,7 @@
 import React from "react";
 import Bar from "../atoms/Bar";
 
-const SearchResults = ({ books }: { books: Bar[] }) =>
+const SearchBar = ({ books }: { books: Bar[] }) =>
   books.length > 0 ? (
     <table>
       <thead>
@@ -14,13 +14,14 @@ const SearchResults = ({ books }: { books: Bar[] }) =>
       <tbody>
         {books.map((book: Bar) => (
           <tr key={book.id}>
-            <td>{book.title}</td>
-            <td className="publisher">{book.title}</td>
-            <td className="publishedDate">{book.title}</td>
+            <td>{book.status.title}</td>
+            <td>{book.status.url}</td>
           </tr>
         ))}
       </tbody>
     </table>
   ) : (
-    <div className="empty-state" />
+    <div />
   );
+
+export default SearchBar;

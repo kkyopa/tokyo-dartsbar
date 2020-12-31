@@ -8,6 +8,7 @@ import Select from "@material-ui/core/Select";
 import Button from "@material-ui/core/Button";
 import axios from "axios";
 import BookSearch from "../molecules/BookSearch";
+import BarSearch from "../molecules/BarSearch";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -78,7 +79,7 @@ export default function SimpleSelect(props) {
   const initData: hits = [];
   const [data, setData] = useState(initData);
 
-  const server = `http://localhost:8000/users?query=redux`;
+  const server = `http://localhost:8000/users`;
 
   const [posts, setPosts] = useState(0);
 
@@ -117,16 +118,10 @@ export default function SimpleSelect(props) {
         </div>
         <p>You clicked {posts} times</p>
         <BookSearch />
+        <BarSearch />
         <ul>
           {props.items.map((list) => (
             <li>{list.text}</li>
-          ))}
-        </ul>
-        <ul>
-          {data.map((item) => (
-            <li>
-              <a href={item.content}>{item.title}</a>
-            </li>
           ))}
         </ul>
         {/* <FormHelperText></FormHelperText> */}

@@ -1,10 +1,8 @@
 import React from "react";
 import Book from "../atoms/Book";
 
-const server = "http://localhost:8000/users";
-
-const SearchResults = ({ books }: { books: Book[] }) =>
-  books.length > 0 ? (
+const SearchResults = ({ boo }: { boo: Book[] }) =>
+  boo.length > 0 ? (
     <table>
       <thead>
         <tr>
@@ -14,7 +12,7 @@ const SearchResults = ({ books }: { books: Book[] }) =>
         </tr>
       </thead>
       <tbody>
-        {books.map((book: Book) => (
+        {boo.map((book: Book) => (
           <tr key={book.id}>
             <td>{book.volumeInfo.title}</td>
             <td className="publisher">{book.volumeInfo.publisher}</td>

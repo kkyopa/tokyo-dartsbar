@@ -4,7 +4,6 @@ import axios from "axios";
 // import Layout from "../atoms/Layout";
 import SearchResults from "../organisms/SearchResults";
 import Book from "../atoms/Book";
-// import "./BookSearch.css";
 
 const getBooks = async (keywords: string): Promise<Book[]> => {
   const url = `https://www.googleapis.com/books/v1/volumes?q=${keywords}`;
@@ -35,7 +34,7 @@ const BookSearch = () => {
         />
         <button type="submit">Search</button>
       </form>
-      <SearchResults books={books} />
+      <SearchResults boo={books} />
     </div>
   );
 };

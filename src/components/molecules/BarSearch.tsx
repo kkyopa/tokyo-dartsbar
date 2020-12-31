@@ -1,13 +1,11 @@
 /*eslint no-use-before-define: 0*/
 import React, { useState } from "react";
 import axios from "axios";
-// import Layout from "../atoms/Layout";
-import SearchResults from "../organisms/SearchResults";
-import Book from "../atoms/Book";
-// import "./BookSearch.css";
+import SearchBar from "../atoms/SearchBar";
+import Bar from "../atoms/Bar";
 
-const getBooks = async (keywords: string): Promise<Book[]> => {
-  const url = `https://www.googleapis.com/books/v1/volumes?q=${keywords}`;
+const getBooks = async (keywords: string): Promise<Bar[]> => {
+  const url = `http://localhost:8000/users?q=${keywords}`;
   const {
     data: { items },
   } = await axios.get(url);
@@ -15,16 +13,16 @@ const getBooks = async (keywords: string): Promise<Book[]> => {
   return items;
 };
 
-const BookSearch = () => {
+const BarSearch = () => {
   const [keywords, setKeywords] = useState<string>("");
-  const [books, setBooks] = useState<Book[]>([]);
+  const [books, setBooks] = useState<Bar[]>([]);
 
   return (
     <div>
       <form
         onSubmit={async (e) => {
           e.preventDefault();
-          const books: Book[] = await getBooks(keywords);
+          const books: Bar[] = await getBooks(keywords);
           setBooks(books);
         }}
       >
@@ -35,9 +33,9 @@ const BookSearch = () => {
         />
         <button type="submit">Search</button>
       </form>
-      <SearchResults books={books} />
+      <SearchBar books={books} />
     </div>
   );
 };
 
-export default BookSearch;
+export default BarSearch;
