@@ -1,7 +1,7 @@
 /*eslint no-use-before-define: 0*/
 import React, { useState } from "react";
 import axios from "axios";
-import Layout from "../atoms/Layout";
+// import Layout from "../atoms/Layout";
 import SearchResults from "../organisms/SearchResults";
 import Book from "../atoms/Book";
 // import "./BookSearch.css";
@@ -20,7 +20,7 @@ const BookSearch = () => {
   const [books, setBooks] = useState<Book[]>([]);
 
   return (
-    <Layout title="Book Search | Next.js + TypeScript Example">
+    <div>
       <form
         onSubmit={async (e) => {
           e.preventDefault();
@@ -36,7 +36,7 @@ const BookSearch = () => {
         <button type="submit">Search</button>
       </form>
       <SearchResults books={books} />
-    </Layout>
+    </div>
   );
 };
 
