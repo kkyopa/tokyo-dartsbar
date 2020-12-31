@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 import Book from "../atoms/Book";
 
 const server = "http://localhost:8000/users";
